@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: api-gateway
+  output:
+    ansi:
+      enabled: detect
+  cloud:
+    gateway:
+      routes:
+        - id: /user
+          uri: http://localhost:8083/user #路由到用户服务
+          predicates:
+            - Path=/user/**
+        - id: /search
+          uri: http://localhost:8082/search #路由到搜索服务
+          predicates:
+            - Path=/search/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/
+
+#logging:
+#  config: classpath:logback.xml
+debug: true

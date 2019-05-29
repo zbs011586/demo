@@ -1,0 +1,32 @@
+server:
+  port: 8082
+
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: search-engine
+  datasource:
+    url: jdbc:mysql://rm-wz9dtr29d5343qo5lmo.mysql.rds.aliyuncs.com:3306/zhiyi?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: shadow
+    password: SDData2018!
+    jpa:
+      hibernate:
+        ddl-auto: none
+        show-sql: true
+    jackson:
+      date-format: yyyy-MM-dd HH:mm:ss
+      time-zone: UTC
+  output:
+    ansi:
+      enabled: detect
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/
+
+#logging:
+#  config: classpath:logback.xml
+debug: true
